@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HAck</title>
+        <style>
+           body {
+            background-color: green;
+            text-align: center;
+           }
+        </style>
+    </head>
+    <body>
+
+    </body>
+    <script>
+
+let additem = async(text) => {
+        await randomdelay();
+        let div= document.createElement('div');
+        div.innerHTML = text;
+        document.body.append(div);
+    }
+
+    let randomdelay = () => {
+    return new Promise((resolve, reject) => {
+        timeout = 1 + 6 * Math.random();
+        setTimeout(() => {
+            resolve()
+        }, timeout * 1000);
+    })
+}
+
+const main = async() => {
+    let item = ["initializing hacking" , "sending files to the server" , "Password Detected" , "You are Hacked" ]
+
+   let t= setInterval(() => {
+        let last = document.body.getElementsByTagName('div');
+        last = last[last.length-1]
+        if (last.innerHTML.endsWith("...")){
+            last.innerHTML = last.innerHTML.slice(0, last.innerHTML.length-3)
+        }
+        else{
+            last.innerHTML = last.innerHTML+ '.'
+        }
+        
+
+    }, 100);
+
+    for (const text of item) {
+        await additem(text);
+        
+    }
+
+    await randomdelay()
+    clearInterval(t)
+
+
+
+   
+
+
+}
+main()
+</script>
+</html>
